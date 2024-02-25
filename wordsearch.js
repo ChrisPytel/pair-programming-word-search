@@ -6,6 +6,7 @@ const wordSearch = (letters, word) => {
   //for handling horizontal words
     for (const row of letters) {
         if (row.join('').includes(word)) return true;
+        //for catching horizontal words going backwards
         if (row.reverse().join('').includes(word)) return true;
     }
 
@@ -18,14 +19,11 @@ const wordSearch = (letters, word) => {
       }
       console.log(`verticalWord is `, verticalWord);
       if (verticalWord.includes(word)) return true;
-      if (verticalWord.split("").reverse().join("").includes(word)) return true;
+      // for catching vertical words going from bottom to top
+      if (verticalWord.split("").reverse().join("").includes(word)) return true; 
     }
   //otherwise as a catch all, returns false
     return false;
 }
-
-
-console.log(`hello my name is ${verticalWord}`);
-
 
 module.exports = wordSearch;
